@@ -8,8 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class CadastroCliente {
     
-    @Autowired
     private IRepositorioCliente repositorioCliente;
+
+    public CadastroCliente(IRepositorioCliente repositorioCliente){
+        this.repositorioCliente = repositorioCliente;
+    }
 
     public void inserir(Cliente cliente) {
         repositorioCliente.inserir(cliente);

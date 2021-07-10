@@ -23,7 +23,6 @@ public class ControladorTelaCliente {
 
     @GetMapping("/cliente")
     public String getClientes(Model model) {
-        model.addAttribute("clientes", fachada.getAllClientes());
         return "clientes";
     }
 

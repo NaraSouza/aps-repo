@@ -1,15 +1,20 @@
 package com.example.demo.negocio;
 
+import com.example.demo.dados.IRepositorioCliente;
+import com.example.demo.dados.IRepositorioEndereco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ControladorCadastroCliente {
 
-    @Autowired
     private CadastroCliente cadastroCliente;
-    @Autowired
     private CadastroEndereco cadastroEndereco;
+
+    public ControladorCadastroCliente(IRepositorioCliente repositorioCliente, IRepositorioEndereco repositorioEndereco){
+        this.cadastroCliente = new CadastroCliente(repositorioCliente);
+        this.cadastroEndereco = new CadastroEndereco(repositorioEndereco);
+    }
 
     public void inserirCliente(Cliente cliente) {
         cadastroCliente.inserir(cliente);
