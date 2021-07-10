@@ -7,20 +7,18 @@ import org.springframework.stereotype.Component;
 public class Fachada {
 
     @Autowired
-    private ControladorCliente controladorCliente;
-    @Autowired
-    private ControladorConta controladorConta;
+    private ControladorCadastroCliente controladorCadastroCliente;
 
     public void inserirCliente(Cliente cliente) {
-        controladorCliente.inserir(cliente);
+        controladorCadastroCliente.inserirCliente(cliente);
+    }
+
+    public void inserirEndereco(Endereco endereco) {
+        controladorCadastroCliente.inserirEndereco(endereco);
     }
 
     public Iterable<Cliente> getAllClientes() {
-        return controladorCliente.getAll();
+        return controladorCadastroCliente.getAll();
     }
 
-    public void inserirConta(Conta conta) {
-        controladorConta.inserir(conta);
-    }
-    
 }

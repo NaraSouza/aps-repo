@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RepositorioClienteSpring implements IRepositorioCliente{
+public class RepositorioClienteBDR implements IRepositorioCliente{
 
     @Autowired
     private ClienteDAO clienteDAO;

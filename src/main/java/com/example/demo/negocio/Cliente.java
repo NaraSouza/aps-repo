@@ -10,22 +10,41 @@ public class Cliente {
     @Id
     private Long id;
     private String nome;
-
+    private String senha;
     @OneToOne
-    private Conta conta;
+    private Endereco endereco;
+    private String email;
 
-    public Cliente(Long id, String nome, Conta conta) {
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Cliente(Long id, String nome, Endereco endereco, String senha, String email) {
         this.id = id;
         this.nome = nome;
-        this.setConta(conta);
-    }
-
-    public Conta getConta() {
-        return conta;
-    }
-
-    public void setConta(Conta conta) {
-        this.conta = conta;
+        this.senha = senha;
+        this.endereco = endereco;
+        this.email = email;
     }
 
     public Cliente () {

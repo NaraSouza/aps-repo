@@ -8,27 +8,24 @@
 </head>
 <body>
     <div>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Cliente</th>
-                    <th>nº Conta</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="cliente: ${clientes}">
-                    <td th:text="${cliente.nome}">Cliente:></td>
-                    <td th:text="${cliente.conta.numero}"></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <form action="/cliente/inserir/" method="get">
+        <form action="/cliente/criar/" method="get">
             <label for="nome">Nome do cliente</label>
             <input name="nome" />
+            <label for="senha">Senha do cliente</label>
+            <input name="senha" />
+            <label for="email">Email do cliente</label>
+            <input name="email" />
+            <label for="rua">Rua do cliente</label>
+            <input name="rua" />
+            <label for="cidade">Cidade do cliente</label>
+            <input name="cidade" />
+            <label for="bairro">Bairro do cliente</label>
+            <input name="bairro" />
+            <label for="complemento">Complemento</label>
+            <input name="complemento" />
+            <label for="cep">CEP</label>
+            <input name="cep" />
             <button type="submit">Criar</button>
-
-
         </form>
     </div>
 </body>
