@@ -1,7 +1,7 @@
 package com.example.demo.dados;
 
 import com.example.demo.ApplicationContextHolder;
-import com.example.demo.negocio.Cliente;
+import com.example.demo.cliente.Cliente;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

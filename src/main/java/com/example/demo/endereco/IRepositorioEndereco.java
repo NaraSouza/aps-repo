@@ -1,7 +1,6 @@
 package com.example.demo.dados;
 
-import com.example.demo.negocio.Cliente;
-import com.example.demo.negocio.Endereco;
+import com.example.demo.endereco.Endereco;
 
 public interface IRepositorioEndereco {
 

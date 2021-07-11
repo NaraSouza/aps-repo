@@ -1,11 +1,8 @@
 package com.example.demo.dados;
 
 import com.example.demo.ApplicationContextHolder;
-import com.example.demo.negocio.Cliente;
 
-import com.example.demo.negocio.Endereco;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import com.example.demo.endereco.Endereco;
 import org.springframework.stereotype.Component;
 
 @Component

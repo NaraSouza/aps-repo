@@ -1,6 +1,6 @@
 package com.example.demo.dados;
 
-import com.example.demo.negocio.Cliente;
+import com.example.demo.cliente.Cliente;
 
 public interface IRepositorioCliente {
 

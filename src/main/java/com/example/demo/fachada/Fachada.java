@@ -1,6 +1,5 @@
 package com.example.demo.negocio;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -8,6 +7,7 @@ public class Fachada {
 
     private FabricaAbstrata fabricaAbstrata;
     private ControladorCadastroCliente controladorCadastroCliente;
+    private ControladorAvaliarPedido controladorAvaliarPedido
 
     public Fachada() {
         this.fabricaAbstrata = new FabricaRepositorioBDR();
