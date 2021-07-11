@@ -16,10 +16,6 @@ public class Restaurante {
     private Avaliacao avaliacao;
     private String nome;
 
-    public Long getId() {
-        return id;
-    }
-
     public Restaurante(FilaPedidos filaPedidos, Avaliacao avaliacao, String nome) {
         this.id = 1l;
         this.filaPedidos = filaPedidos;
@@ -34,6 +30,10 @@ public class Restaurante {
     public Restaurante() {
 
     }
+    
+    public Long getId() {
+        return id;
+    }
 
     public FilaPedidos getFilaPedidos() {
         return filaPedidos;
@@ -47,12 +47,12 @@ public class Restaurante {
         return this.avaliacao;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
     public void setAvaliacao(Avaliacao avaliacao) {
         this.avaliacao = avaliacao;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public void setNome(String nome) {

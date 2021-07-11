@@ -40,9 +40,13 @@ public class ControladorTelaCliente {
         String bairro =requestParams.get("bairro");
         String complemento =requestParams.get("complemento");
         String cep =requestParams.get("cep");
+
         Endereco endereco =  new Endereco(idCounter.getAndIncrement(),rua,cidade,bairro,complemento,cep);
+
         Cliente cliente = new Cliente(idCounter.getAndIncrement(), nome, endereco , senha, email);
+
         fachada.cadastrar(cliente, endereco);
+
         return "redirect:/avaliarPedido";
     }
 
@@ -55,11 +59,14 @@ public class ControladorTelaCliente {
     public String avaliarPedido(@RequestParam Map<String,String> requestParams){
         String nota = requestParams.get("nota");
         String comentario = requestParams.get("comentario");
+
         Pedido pedido = new Pedido(idCounter.getAndIncrement());
         FilaPedidos filaPedidos = new FilaPedidos();
         Avaliacao avaliacao = new Avaliacao(Double.parseDouble(nota), comentario);
         Restaurante restaurante = new Restaurante(idCounter.getAndIncrement());
+
         fachada.avaliarPedido(pedido, restaurante, avaliacao);
+
         return "redirect:/avaliarPedido";
     }
 

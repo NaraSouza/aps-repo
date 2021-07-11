@@ -14,6 +14,19 @@ public class Endereco {
     private String complemento;
     private String CEP;
 
+    public Endereco(Long id, String rua, String cidade, String bairro, String complemento, String cep) {
+        this.id = id;
+        this.rua = rua;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.complemento = complemento;
+        CEP = cep;
+    }
+
+    public Endereco() {
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -24,13 +37,6 @@ public class Endereco {
 
     public String getRua() {
         return rua;
-    }
-
-    @Override
-    public String toString() {
-        return "Endereco{" +
-                "rua='" + rua + '\'' +
-                '}';
     }
 
     public void setRua(String rua) {
@@ -69,16 +75,15 @@ public class Endereco {
         this.CEP = CEP;
     }
 
-    public Endereco(Long id, String rua, String cidade, String bairro, String complemento, String cep) {
-        this.id = id;
-        this.rua = rua;
-        this.cidade = cidade;
-        this.bairro = bairro;
-        this.complemento = complemento;
-        CEP = cep;
+    @Override
+    public String toString() {
+        return "Endereco{" +
+                "rua='" + rua + '\'' +
+                "bairro='" + bairro + '\'' +
+                "complemento='" + complemento + '\'' +
+                "cidade='" + cidade + '\'' +
+                "CEP='" + CEP + '\'' + 
+                '}';
     }
-
-    public Endereco() {
-
-    }
+    
 }

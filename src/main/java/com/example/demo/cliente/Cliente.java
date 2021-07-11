@@ -17,6 +17,34 @@ public class Cliente {
     private Endereco endereco;
     private String email;
 
+    public Cliente(Long id, String nome, Endereco endereco, String senha, String email) {
+        this.id = id;
+        this.nome = nome;
+        this.senha = senha;
+        this.endereco = endereco;
+        this.email = email;
+    }
+
+    public Cliente () {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getSenha() {
         return senha;
     }
@@ -40,32 +68,6 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public Cliente(Long id, String nome, Endereco endereco, String senha, String email) {
-        this.id = id;
-        this.nome = nome;
-        this.senha = senha;
-        this.endereco = endereco;
-        this.email = email;
-    }
-
-    public Cliente () {
-
-    }
-    
-    public String getNome() {
-        return nome;
-    }
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
 
     public String toString() {
         return this.id + " " + this.nome;
