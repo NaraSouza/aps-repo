@@ -1,12 +1,16 @@
-package com.example.demo.comunicacao;
+package com.example.demo.controllersC;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
-import com.example.demo.negocio.Cliente;
-import com.example.demo.negocio.Endereco;
-import com.example.demo.negocio.Fachada;
+import com.example.demo.cliente.Cliente;
+import com.example.demo.endereco.Endereco;
+import com.example.demo.fachada.Fachada;
 
+import com.example.demo.pedido.Pedido;
+import com.example.demo.avaliacao.Avaliacao;
+import com.example.demo.restaurante.FilaPedidos;
+import com.example.demo.restaurante.Restaurante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,10 +41,26 @@ public class ControladorTelaCliente {
         String complemento =requestParams.get("complemento");
         String cep =requestParams.get("cep");
         Endereco endereco =  new Endereco(idCounter.getAndIncrement(),rua,cidade,bairro,complemento,cep);
-        fachada.inserirEndereco(endereco);
         Cliente cliente = new Cliente(idCounter.getAndIncrement(), nome, endereco , senha, email);
-        fachada.inserirCliente(cliente);
-        return "redirect:/cliente";
+        fachada.cadastrar(cliente, endereco);
+        return "redirect:/avaliarPedido";
+    }
+
+    @GetMapping("/avaliarPedido")
+    public String getPedidos(Model model) {
+        return "avaliarPedido";
+    }
+
+    @GetMapping("/avaliarPedido/avaliar")
+    public String avaliarPedido(@RequestParam Map<String,String> requestParams){
+        String nota = requestParams.get("nota");
+        String comentario = requestParams.get("comentario");
+        Pedido pedido = new Pedido(idCounter.getAndIncrement());
+        FilaPedidos filaPedidos = new FilaPedidos();
+        Avaliacao avaliacao = new Avaliacao(Double.parseDouble(nota), comentario);
+        Restaurante restaurante = new Restaurante(idCounter.getAndIncrement());
+        fachada.avaliarPedido(pedido, restaurante, avaliacao);
+        return "redirect:/avaliarPedido";
     }
 
 }

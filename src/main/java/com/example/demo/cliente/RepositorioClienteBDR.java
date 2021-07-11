@@ -1,13 +1,12 @@
-package com.example.demo.dados;
+package com.example.demo.cliente;
 
 import com.example.demo.ApplicationContextHolder;
-import com.example.demo.cliente.Cliente;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RepositorioClienteBDR implements IRepositorioCliente{
+public class RepositorioClienteBDR implements IRepositorioCliente {
 
     @Autowired
     private ClienteDAO clienteDAO;

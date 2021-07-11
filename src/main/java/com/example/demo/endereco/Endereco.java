@@ -1,4 +1,4 @@
-package com.example.demo.negocio;
+package com.example.demo.endereco;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

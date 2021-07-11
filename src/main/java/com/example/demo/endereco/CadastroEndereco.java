@@ -1,6 +1,5 @@
-package com.example.demo.negocio;
+package com.example.demo.endereco;
 
-import com.example.demo.dados.IRepositorioEndereco;
 import org.springframework.stereotype.Component;
 
 @Component

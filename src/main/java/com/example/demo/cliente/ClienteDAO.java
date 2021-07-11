@@ -1,4 +1,4 @@
-package com.example.demo.dados;
+package com.example.demo.cliente;
 
 import com.example.demo.cliente.Cliente;
 

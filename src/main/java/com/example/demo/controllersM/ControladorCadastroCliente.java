@@ -1,7 +1,11 @@
-package com.example.demo.negocio;
+package com.example.demo.controllersM;
 
-import com.example.demo.dados.IRepositorioCliente;
-import com.example.demo.dados.IRepositorioEndereco;
+import com.example.demo.cliente.IRepositorioCliente;
+import com.example.demo.endereco.IRepositorioEndereco;
+import com.example.demo.cliente.CadastroCliente;
+import com.example.demo.endereco.CadastroEndereco;
+import com.example.demo.cliente.Cliente;
+import com.example.demo.endereco.Endereco;
 import org.springframework.stereotype.Component;
 
 @Component

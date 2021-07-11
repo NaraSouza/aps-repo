@@ -1,12 +1,11 @@
-package com.example.demo.dados;
+package com.example.demo.endereco;
 
 import com.example.demo.ApplicationContextHolder;
 
-import com.example.demo.endereco.Endereco;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RepositorioEnderecoBDR implements IRepositorioEndereco{
+public class RepositorioEnderecoBDR implements IRepositorioEndereco {
 
     private EnderecoDAO enderecoDAO;
 

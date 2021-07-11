@@ -1,6 +1,4 @@
-package com.example.demo.negocio;
-
-import com.example.demo.dados.IRepositorioCliente;
+package com.example.demo.cliente;
 
 import org.springframework.stereotype.Component;
 

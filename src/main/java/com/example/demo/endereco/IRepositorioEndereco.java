@@ -1,4 +1,4 @@
-package com.example.demo.dados;
+package com.example.demo.endereco;
 
 import com.example.demo.endereco.Endereco;
 
