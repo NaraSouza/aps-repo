@@ -1,8 +1,10 @@
 package com.example.demo.avaliacao;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Embeddable
 @Entity
 public class Avaliacao {
     @Id

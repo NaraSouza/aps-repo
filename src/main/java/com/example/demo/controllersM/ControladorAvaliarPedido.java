@@ -54,7 +54,7 @@ public class ControladorAvaliarPedido {
             System.out.println("Erro na avaliacao");
         } else {
             pedido.setAvaliacao(avaliacao);
-            restaurante.setAvaliacao(avaliacao);
+            restaurante.addAvaliacao(avaliacao);
             cadastroRestaurante.atualizar(restaurante);
             cadastroPedido.atualizar(pedido);
         }
