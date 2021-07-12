@@ -62,7 +62,7 @@ public class ControladorTelaCliente {
 
         Pedido pedido = new Pedido(idCounter.getAndIncrement());
         FilaPedidos filaPedidos = new FilaPedidos();
-        Avaliacao avaliacao = new Avaliacao(Double.parseDouble(nota), comentario);
+        Avaliacao avaliacao = new Avaliacao(idCounter.getAndIncrement(), Double.parseDouble(nota), comentario);
         Restaurante restaurante = new Restaurante(idCounter.getAndIncrement());
 
         fachada.avaliarPedido(pedido, restaurante, avaliacao);

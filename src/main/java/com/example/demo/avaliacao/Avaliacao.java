@@ -37,8 +37,8 @@ public class Avaliacao {
 
     private String comentario;
 
-    public Avaliacao(Double nota, String comentario) {
-        this.id = 1l;
+    public Avaliacao(Long id, Double nota, String comentario) {
+        this.id = id;
         this.nota = nota;
         this.comentario = comentario;
     }
