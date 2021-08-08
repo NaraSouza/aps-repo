@@ -1,14 +1,11 @@
 package com.example.demo.restaurante;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.example.demo.avaliacao.Avaliacao;
-
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import com.example.demo.pedido.Pedido;
 
 @Entity
 public class Restaurante {
@@ -16,14 +13,11 @@ public class Restaurante {
     private Long id;
     @OneToOne
     private FilaPedidos filaPedidos;
-    @ElementCollection
-    private List<Avaliacao> avaliacoes = new ArrayList<Avaliacao>();
     private String nome;
 
-    public Restaurante(FilaPedidos filaPedidos, List<Avaliacao> avaliacoes, String nome) {
+    public Restaurante(FilaPedidos filaPedidos, String nome) {
         this.id = 1l;
         this.filaPedidos = filaPedidos;
-        this.avaliacoes = avaliacoes;
         this.nome = nome;
     }
 
@@ -45,14 +39,6 @@ public class Restaurante {
 
     public void setFilaPedidos(FilaPedidos filaPedidos) {
         this.filaPedidos = filaPedidos;
-    }
-
-    public List<Avaliacao> getAvaliacoes() {
-        return avaliacoes;
-    }
-
-    public void addAvaliacao(Avaliacao avaliacao) {
-        avaliacoes.add(avaliacao);
     }
 
     public String getNome() {

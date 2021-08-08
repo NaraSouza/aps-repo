@@ -1,7 +1,9 @@
 package com.example.demo.pedido;
 
-import com.example.demo.avaliacao.Avaliacao;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -10,10 +12,8 @@ import javax.persistence.OneToOne;
 public class Pedido {
     @Id
     private Long id;
-    @OneToOne
-    private Avaliacao avaliacao;
-    @OneToOne
-    private Item itens;
+    @ElementCollection
+    private List<Item> itens = new ArrayList<Item>();
     @OneToOne
     private StatusPedido status;
 
@@ -24,26 +24,17 @@ public class Pedido {
         this.id = id;
     }
 
-    public Pedido(Avaliacao avaliacao, Item itens, StatusPedido status) {
+    public Pedido(List<Item> itens, StatusPedido status) {
         this.id = 1l;
-        this.avaliacao = avaliacao;
         this.itens = itens;
         this.status = status;
     }
 
-    public Avaliacao getAvaliacao() {
-        return avaliacao;
-    }
-
-    public void setAvaliacao(Avaliacao avaliacao) {
-        this.avaliacao = avaliacao;
-    }
-
-    public Item getItens() {
+    public List<Item> getItens() {
         return itens;
     }
 
-    public void setItens(Item itens) {
+    public void setItens(List<Item> itens) {
         this.itens = itens;
     }
 

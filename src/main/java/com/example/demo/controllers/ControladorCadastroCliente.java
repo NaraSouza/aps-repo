@@ -1,4 +1,4 @@
-package com.example.demo.controllersM;
+package com.example.demo.controllers;
 
 import com.example.demo.cliente.IRepositorioCliente;
 import com.example.demo.endereco.IRepositorioEndereco;
