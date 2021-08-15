@@ -5,8 +5,11 @@ import "../css/App.scss";
 import ChangePassword from "./access/ChangePassword";
 import Login from "./access/Login";
 import SignUp from "./access/SignUp";
+import MyAccount from "./access/MyAccount";
 import CancelOrder from "./order/CancelOrder";
 import MyOrders from "./order/MyOrders";
+import MakeOrder from "./order/MakeOrder";
+import PaymentMethods from "./order/PaymentMethods";
 import Order from "./order/Order";
 import RateOrder from "./order/RateOrder";
 
@@ -26,7 +29,13 @@ function App() {
 
             <Route path="/changePassword" component={ChangePassword} />
 
+            <Route path="/myAccount" component={MyAccount} />
+
             <Route path="/myOrders" component={MyOrders} />
+
+            <Route path="/makeOrder" component={MakeOrder} />
+
+            <Route path="/paymentMethods" component={PaymentMethods} />
 
             <Route path="/cancelOrder" component={CancelOrder} />
 

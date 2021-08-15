@@ -73,8 +73,10 @@
     .login-screen,
     .signup-screen,
     .change-password-screen,
+    .my-account-screen,
     .cancel-order-screen,
-    .rate-order-screen {
+    .rate-order-screen,
+    .payment-methods-screen {
       display: inline-grid;
       text-align: center;
       width: 300px;
@@ -90,13 +92,15 @@
     }
 
     .signup-screen,
-    .change-password-screen {
+    .change-password-screen,
+    .my-account-screen {
       button {
         justify-self: center;
       }
     }
 
-    .signup-screen {
+    .signup-screen,
+    .my-account-screen {
       height: 650px;
     }
 
@@ -174,11 +178,14 @@
       }
     }
 
-    .rate-order-screen {
+    .rate-order-screen,
+    .payment-methods-screen {
       text-align: start;
     }
 
-    .order-screen {
+    .order-screen,
+    .make-order-screen,
+    .payment-methods-screen {
       width: 500px;
       height: 500px;
       margin-top: 80px;
@@ -186,6 +193,27 @@
       .item-header {
         display: inline-grid;
       }
+    }
+
+    .make-order-screen,
+    .payment-methods-screen {
+      button {
+        width: 300px;
+      }
+    }
+
+    .payment-methods-screen {
+      height: 300px;
+    }
+
+    .payment-method-card {
+      border: solid 1px #e7e7e7;
+      border-radius: 0.25rem;
+      padding: 15px;
+      width: 100px;
+      height: 40px;
+      margin-right: 20px;
+      margin-bottom: 20px;
     }
   }
 }

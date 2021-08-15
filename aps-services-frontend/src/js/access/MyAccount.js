@@ -1,6 +1,8 @@
 import { Formik } from "formik";
 
-export default function SignUp() {
+export default function MyAccount() {
+  //fazer get para pegar valores iniciais dos inputs
+
   return (
     <Formik
       initialValues={{
@@ -18,15 +20,15 @@ export default function SignUp() {
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
-          //fazer post
+          //fazer put
           setSubmitting(false);
         }, 400);
       }}
     >
       {({ values, handleChange, handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <div className="signup-screen">
-            <span className="title">Cadastrar</span>
+          <div className="my-account-screen">
+            <span className="title">Meus dados</span>
 
             <input
               name="name"
@@ -51,6 +53,14 @@ export default function SignUp() {
               value={values.password}
               type="password"
             />
+
+            <a
+              href="https://reactjs.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Alterar senha
+            </a>
 
             <span className="subtitle mt-2">Endereço</span>
 
@@ -119,7 +129,7 @@ export default function SignUp() {
             </div>
 
             <button className="btn primary" type="submit">
-              Cadastrar
+              Atualizar dados
             </button>
           </div>
         </form>
