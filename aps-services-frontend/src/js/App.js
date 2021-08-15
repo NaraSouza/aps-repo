@@ -45,11 +45,11 @@ function App() {
 
               <Route path="/paymentMethods" component={PaymentMethods} />
 
-              <Route path="/cancelOrder" component={CancelOrder} />
+              <Route path="/cancelOrder/:orderData" component={CancelOrder} />
 
-              <Route path="/rateOrder" component={RateOrder} />
+              <Route path="/rateOrder/:orderData" component={RateOrder} />
 
-              <Route path="/order" component={Order} />
+              <Route path="/order/:orderData" component={Order} />
             </Switch>
           </Router>
         </AppContext.Provider>

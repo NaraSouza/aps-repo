@@ -1,7 +1,9 @@
+import { useParams } from "react-router-dom";
+
 import Item from "./Item";
 
 export default function Order({
-  order = {
+  orderA = {
     restaurant: "Galo Padeiro",
     items: [
       { name: "Sanduiche brie e parma", description: "Croissant", price: 22 },
@@ -11,6 +13,12 @@ export default function Order({
     status: "em andamento",
   },
 }) {
+  const { orderData } = useParams();
+
+  const orderP = JSON.parse(orderData);
+
+  const order = orderP || orderA;
+
   return (
     <div className="order-screen">
       <span className="title" style={{ fontWeight: "bold" }}>
@@ -18,8 +26,8 @@ export default function Order({
       </span>
 
       <div className="mt-4">
-        {order.items.map((item) => (
-          <Item item={item} />
+        {order.items.map((item, index) => (
+          <Item key={index} item={item} />
         ))}
       </div>
 

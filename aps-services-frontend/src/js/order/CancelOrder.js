@@ -1,13 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function CancelOrder() {
+  const { orderData } = useParams();
+
   return (
     <div className="cancel-order-screen">
       <span className="title">Deseja realmente cancelar seu pedido?</span>
 
       <div className="buttons">
-        {/* passar parametro com order */}
-        <Link className="btn secondary" to="/order">
+        <Link className="btn secondary" to={`/order/${orderData}`}>
           Não, voltar ao pedido
         </Link>
 

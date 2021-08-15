@@ -13,8 +13,10 @@ export default function OrderSummary({ order }) {
             <span className="order-status">Pedido {order.status}</span>
           </div>
 
-          {/* passar parametro com pedido */}
-          <Link className="icon-go-to-order" to="/order">
+          <Link
+            className="icon-go-to-order"
+            to={`/order/${JSON.stringify(order)}`}
+          >
             <i className="fa fa-chevron-right"></i>
           </Link>
         </div>
@@ -30,15 +32,16 @@ export default function OrderSummary({ order }) {
         </div>
 
         {completed ? (
-          // passar parametro com pedido
-          <Link className="btn secondary" to="/rateOrder">
+          <Link
+            className="btn secondary"
+            to={`/rateOrder/${JSON.stringify(order)}`}
+          >
             Avaliar pedido
           </Link>
         ) : (
-          // passar parametro com pedido
           <Link
             className="btn primary"
-            to="/cancelOrder"
+            to={`/cancelOrder/${JSON.stringify(order)}`}
             style={{ width: "150px" }}
           >
             Cancelar pedido
