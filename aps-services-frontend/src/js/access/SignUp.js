@@ -1,6 +1,11 @@
+import axios from "axios";
 import { Formik } from "formik";
+import { useContext } from "react";
+import { AppContext } from "../App";
 
 export default function SignUp() {
+  const { setUsername } = useContext(AppContext);
+
   return (
     <Formik
       initialValues={{
@@ -18,7 +23,10 @@ export default function SignUp() {
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
-          //fazer post
+
+          axios.post("https://localhost:5555/api/people/", values);
+
+          setUsername(values.name);
           setSubmitting(false);
         }, 400);
       }}

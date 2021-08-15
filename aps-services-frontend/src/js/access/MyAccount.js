@@ -1,26 +1,50 @@
+import axios from "axios";
 import { Formik } from "formik";
+import { useContext, useState } from "react";
+
+import { AppContext } from "../App";
 
 export default function MyAccount() {
-  //fazer get para pegar valores iniciais dos inputs
+  const { username } = useContext(AppContext);
+  const [data, setData] = useState({});
+
+  axios
+    .get(`https://localhost:5555/api/people/${username}`)
+    .then((response) => {
+      setData({
+        name: response.name,
+        email: response.email,
+        password: response.password,
+        rua: response.endereco.rua,
+        numero: response.endereco.numero,
+        complemento: response.endereco.complemento,
+        bairro: response.endereco.bairro,
+        cidade: response.endereco.cidade,
+        estado: response.endereco.estado,
+        cep: response.endereco.cep,
+      });
+    });
 
   return (
     <Formik
       initialValues={{
-        name: "",
-        email: "",
-        password: "",
-        rua: "",
-        numero: "",
-        complemento: "",
-        bairro: "",
-        cidade: "",
-        estado: "",
-        cep: "",
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        rua: data.rua,
+        numero: data.numero,
+        complemento: data.complemento,
+        bairro: data.bairro,
+        cidade: data.cidade,
+        estado: data.estado,
+        cep: data.cep,
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
-          //fazer put
+
+          axios.put("https://localhost:5555/api/people/", values);
+
           setSubmitting(false);
         }, 400);
       }}

@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import logo from "../assets/logo.png";
@@ -13,7 +14,13 @@ import PaymentMethods from "./order/PaymentMethods";
 import Order from "./order/Order";
 import RateOrder from "./order/RateOrder";
 
+const AppContext = React.createContext();
+
 function App() {
+  const [username, setUsername] = useState("");
+
+  const state = { username, setUsername };
+
   return (
     <div className="App">
       <header>
@@ -21,32 +28,35 @@ function App() {
       </header>
 
       <div className="content">
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Login} />
+        <AppContext.Provider value={state}>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Login} />
 
-            <Route path="/signUp" component={SignUp} />
+              <Route path="/signUp" component={SignUp} />
 
-            <Route path="/changePassword" component={ChangePassword} />
+              <Route path="/changePassword" component={ChangePassword} />
 
-            <Route path="/myAccount" component={MyAccount} />
+              <Route path="/myAccount" component={MyAccount} />
 
-            <Route path="/myOrders" component={MyOrders} />
+              <Route path="/myOrders" component={MyOrders} />
 
-            <Route path="/makeOrder" component={MakeOrder} />
+              <Route path="/makeOrder" component={MakeOrder} />
 
-            <Route path="/paymentMethods" component={PaymentMethods} />
+              <Route path="/paymentMethods" component={PaymentMethods} />
 
-            <Route path="/cancelOrder" component={CancelOrder} />
+              <Route path="/cancelOrder" component={CancelOrder} />
 
-            <Route path="/rateOrder" component={RateOrder} />
+              <Route path="/rateOrder" component={RateOrder} />
 
-            <Route path="/order" component={Order} />
-          </Switch>
-        </Router>
+              <Route path="/order" component={Order} />
+            </Switch>
+          </Router>
+        </AppContext.Provider>
       </div>
     </div>
   );
 }
 
+export { AppContext };
 export default App;
