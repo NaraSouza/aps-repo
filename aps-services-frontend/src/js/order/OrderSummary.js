@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function OrderSummary({ order }) {
   const completed = order.status === "concluido";
 
@@ -11,9 +13,10 @@ export default function OrderSummary({ order }) {
             <span className="order-status">Pedido {order.status}</span>
           </div>
 
-          <button className="icon-go-to-order">
+          {/* passar parametro com pedido */}
+          <Link className="icon-go-to-order" to="/order">
             <i className="fa fa-chevron-right"></i>
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -27,11 +30,19 @@ export default function OrderSummary({ order }) {
         </div>
 
         {completed ? (
-          <button className="btn secondary">Avaliar pedido</button>
+          // passar parametro com pedido
+          <Link className="btn secondary" to="/rateOrder">
+            Avaliar pedido
+          </Link>
         ) : (
-          <button className="btn primary" style={{ width: "150px" }}>
+          // passar parametro com pedido
+          <Link
+            className="btn primary"
+            to="/cancelOrder"
+            style={{ width: "150px" }}
+          >
             Cancelar pedido
-          </button>
+          </Link>
         )}
       </div>
     </div>

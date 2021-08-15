@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Item from "./Item";
 
 export default function MakeOrder({
@@ -35,7 +37,9 @@ export default function MakeOrder({
         <div
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
-          <button className="btn primary">Escolher forma de pagamento</button>
+          <Link className="btn primary" to="/paymentMethods">
+            Escolher forma de pagamento
+          </Link>
         </div>
       </div>
     </div>

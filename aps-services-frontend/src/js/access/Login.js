@@ -1,4 +1,5 @@
 import { Formik } from "formik";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
@@ -33,16 +34,14 @@ export default function Login() {
               type="password"
             />
 
-            <a
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="#/changePassword" target="_self" rel="noopener noreferrer">
               Alterar senha
             </a>
 
             <div className="buttons">
-              <button className="btn secondary">Cadastrar</button>
+              <Link className="btn secondary" to="/signUp">
+                Cadastrar
+              </Link>
 
               <button className="btn primary" type="submit">
                 Login

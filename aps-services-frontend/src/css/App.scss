@@ -20,7 +20,7 @@
     }
 
     input,
-    button {
+    .btn {
       height: 40px;
     }
 
@@ -36,7 +36,7 @@
       font-size: 15px;
     }
 
-    button {
+    .btn {
       width: 140px;
     }
 
@@ -82,7 +82,7 @@
       width: 300px;
       margin-top: 80px;
 
-      a {
+      a:not(.btn) {
         text-align: end;
       }
     }
@@ -94,7 +94,7 @@
     .signup-screen,
     .change-password-screen,
     .my-account-screen {
-      button {
+      .btn {
         justify-self: center;
       }
     }
@@ -114,7 +114,7 @@
       margin-left: 40px;
       width: 100%;
 
-      button {
+      .btn {
         font-size: 12px;
       }
 
@@ -167,13 +167,17 @@
         font-size: 16px;
         color: #b7b7b7;
       }
+
+      .btn {
+        height: 32px;
+      }
     }
 
     .cancel-order-screen {
       width: 500px;
       height: 300px;
 
-      button {
+      .btn {
         width: 220px;
       }
     }
@@ -197,7 +201,7 @@
 
     .make-order-screen,
     .payment-methods-screen {
-      button {
+      .btn {
         width: 300px;
       }
     }

@@ -32,6 +32,7 @@ export default function PaymentMethods({
         ))}
       </div>
 
+      {/* fazer request para salvar pedido */}
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <button className="btn primary">Realizar pagamento</button>
       </div>

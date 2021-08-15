@@ -1,4 +1,5 @@
 import { Formik } from "formik";
+import { Link } from "react-router-dom";
 
 export default function RateOrder() {
   return (
@@ -34,7 +35,9 @@ export default function RateOrder() {
             />
 
             <div className="buttons">
-              <button className="btn secondary">Cancelar</button>
+              <Link className="btn secondary" to="/myOrders">
+                Cancelar
+              </Link>
 
               <button className="btn primary" type="submit">
                 Avaliar pedido
