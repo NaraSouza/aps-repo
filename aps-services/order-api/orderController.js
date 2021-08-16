@@ -18,7 +18,7 @@ app.use(bodyParser())
 app.use(koaRequest({
     json: true,
     timeout: 3000, 
-    host: 'http://172.17.0.1:5555'
+    host: '172.17.0.1:5555'
   }));
 
 const validatePayment = (payment) => {
@@ -75,6 +75,30 @@ router.put('/evaluate', async (ctx, next) => {
     } catch (error) {
         ctx.body = {text: 'Erro no processo de avaliação'}
         ctx.status = 500
+    }
+})
+
+router.get('/getbyuser/:username', async (ctx, next) => {
+    const name = ctx.params.username
+    const result = await ctx.mongo.db('orders-db').collection('orders').find({ usuario: name }).toArray()
+    if(result !== []){
+        ctx.body = {orders: result}
+        ctx.status = 200
+    } else {
+        ctx.body = {orders: []}
+        ctx.status = 204
+    }
+})
+
+router.get('/getbyusercompleted/:username', async (ctx, next) => {
+    const name = ctx.params.username
+    const result = await ctx.mongo.db('orders-db').collection('orders').find({ usuario: name, status: 'concluido' }).toArray()
+    if(result !== []){
+        ctx.body = {orders: result}
+        ctx.status = 200
+    } else {
+        ctx.body = {orders: []}
+        ctx.status = 204
     }
 })
 
