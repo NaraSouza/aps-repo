@@ -24,7 +24,7 @@ export default function SignUp() {
               nome,
               email,
               senha,
-              endereco: { endereco },
+              endereco,
             })
             .then(() => alert("Cliente cadastrado com sucesso"))
             .catch(() => alert("Erro ao cadastrar cliente"));

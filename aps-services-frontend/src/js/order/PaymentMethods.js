@@ -61,7 +61,7 @@ export default function PaymentMethods({
           className="btn primary"
           onClick={() => {
             axios
-              .post("https://localhost:3001/create/", {
+              .post("http://localhost:3001/create/", {
                 pedido: order,
                 pagamento: { forma: chosenMethod, valor: order.total },
               })

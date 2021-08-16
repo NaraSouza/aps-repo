@@ -1,37 +1,45 @@
 import axios from "axios";
 import { Formik } from "formik";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ChangePassword() {
   const username = localStorage.getItem("username");
   const [data, setData] = useState({});
 
-  axios
-    .get(`https://localhost:5555/api/people/${username}`)
-    .then((response) => {
+
+  useEffect(() => {
+    axios
+    .get(`http://localhost:5555/api/people/${username}`)
+    .then(({data}) => {
+      const { client } = data
       setData({
-        nome: response.name,
-        email: response.email,
-        senha: response.password,
-        rua: response.endereco.rua,
-        numero: response.endereco.numero,
-        complemento: response.endereco.complemento,
-        bairro: response.endereco.bairro,
-        cidade: response.endereco.cidade,
-        estado: response.endereco.estado,
-        cep: response.endereco.cep,
+        nome: client.nome,
+        email: client.email,
+        senha: client.senha,
+        rua: client.endereco.rua,
+        numero: client.endereco.numero,
+        complemento: client.endereco.complemento,
+        bairro: client.endereco.bairro,
+        cidade: client.endereco.cidade,
+        estado: client.endereco.estado,
+        cep: client.endereco.cep,
       });
     })
     .catch(() => alert("Erro ao buscar dados"));
+  }, [])
+  
 
   return (
     <Formik
       initialValues={{ email: "", newPassword: "", confirmNewPassword: "" }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
+          const { nome, email, senha, ...endereco } = data;
           axios
-            .put("https://localhost:5555/api/people/", {
-              ...data,
+            .put("http://localhost:5555/api/people/", {
+              nome,
+              email,
+              endereco,
               senha: values.confirmNewPassword,
             })
             .then(() => alert("Senha alterada com sucesso"))

@@ -28,13 +28,14 @@ export default function MyOrders() {
 
   const completedOrders = [
     {
-      restaurante: "Degusta",
-      _id: 2,
-      avaliacao: {},
-      itens: [{ name: "Sorvete Doce de Leite", description: "", price: 30 }],
       status: "concluido",
-      total: 30,
-      usuario: username,
+      itens: [
+          "pizza",
+          "garrafa"
+      ],
+      avaliacao: {},
+      usuario: "r",
+      restaurante: "Degusta"
     },
     {
       restaurante: "Galo Padeiro",

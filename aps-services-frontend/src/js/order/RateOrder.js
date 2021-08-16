@@ -12,8 +12,9 @@ export default function RateOrder() {
       initialValues={{ nota: "", comentario: "" }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
+          console.log(order, values)
           axios
-            .post("https://localhost:3001/evaluate/", {
+            .put("http://localhost:3001/evaluate/", {
               pedido: order,
               avaliacao: values,
             })

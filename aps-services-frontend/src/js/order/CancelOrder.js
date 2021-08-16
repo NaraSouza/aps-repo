@@ -19,7 +19,7 @@ export default function CancelOrder() {
           className="btn primary"
           onClick={() => {
             axios
-              .put("https://localhost:3001/cancel/", order._id)
+              .put("http://localhost:3001/cancel/", order._id)
               .then(() => alert("Pedido cancelado com sucesso"))
               .catch(() => alert("Erro ao cancelar pedido"));
           }}
