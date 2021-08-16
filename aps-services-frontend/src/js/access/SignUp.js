@@ -9,9 +9,9 @@ export default function SignUp() {
   return (
     <Formik
       initialValues={{
-        name: "",
+        nome: "",
         email: "",
-        password: "",
+        senha: "",
         rua: "",
         numero: "",
         complemento: "",
@@ -23,13 +23,13 @@ export default function SignUp() {
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
-
+          const { nome, email, senha, ...others } = values
           axios
-            .post("https://localhost:5555/api/people/", values)
+            .post("http://localhost:5555/api/people/", {nome, email, senha, endereco: {others}})
             .then(() => alert("Cliente cadastrado com sucesso"))
             .catch(() => alert("Erro ao cadastrar cliente"));
 
-          setUsername(values.name);
+          setUsername(values.nome);
           setSubmitting(false);
         }, 400);
       }}
@@ -40,7 +40,7 @@ export default function SignUp() {
             <span className="title">Cadastrar</span>
 
             <input
-              name="name"
+              name="nome"
               placeholder="Nome"
               onChange={handleChange}
               value={values.name}
@@ -56,10 +56,10 @@ export default function SignUp() {
             />
 
             <input
-              name="password"
+              name="senha"
               placeholder="Senha"
               onChange={handleChange}
-              value={values.password}
+              value={values.senha}
               type="password"
             />
 

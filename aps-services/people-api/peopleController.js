@@ -3,9 +3,12 @@ const Router = require('koa-router')
 const mongo = require('koa-mongo')
 const bodyParser = require('koa-bodyparser')
 const constants = require('./constants')
+const cors = require('@koa/cors');
 
 const app = new Koa()
 const router = new Router()
+
+app.use(cors())
 
 app.use(mongo(constants.MONGO_INFO))
 

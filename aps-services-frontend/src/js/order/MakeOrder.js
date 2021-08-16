@@ -5,7 +5,7 @@ import Item from "./Item";
 export default function MakeOrder({
   order = {
     restaurant: "Galo Padeiro",
-    items: [
+    itens: [
       { name: "Sanduiche brie e parma", description: "Croissant", price: 22 },
       { name: "Madeleine tradicional", description: "", price: 7 },
     ],
@@ -20,7 +20,7 @@ export default function MakeOrder({
       </span>
 
       <div className="mt-4">
-        {order.items.map((item) => (
+        {order.itens.map((item) => (
           <Item item={item} />
         ))}
       </div>

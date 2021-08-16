@@ -6,7 +6,7 @@ import { AppContext } from "../App";
 export default function ChangePassword() {
   const { username } = useContext(AppContext);
   const [data, setData] = useState({});
-
+  console.log(username)
   axios
     .get(`https://localhost:5555/api/people/${username}`)
     .then((response) => {

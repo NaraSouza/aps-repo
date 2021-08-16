@@ -5,7 +5,7 @@ import Item from "./Item";
 export default function Order({
   orderA = {
     restaurant: "Galo Padeiro",
-    items: [
+    itens: [
       { name: "Sanduiche brie e parma", description: "Croissant", price: 22 },
       { name: "Madeleine tradicional", description: "", price: 7 },
     ],
@@ -26,7 +26,7 @@ export default function Order({
       </span>
 
       <div className="mt-4">
-        {order.items.map((item, index) => (
+        {order.itens.map((item, index) => (
           <Item key={index} item={item} />
         ))}
       </div>

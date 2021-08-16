@@ -26,7 +26,7 @@ export default function OrderSummary({ order }) {
 
       <div className="card-half">
         <div className="order-items">
-          {order.items.map((item, index) => (
+          {order.itens.map((item, index) => (
             <span key={index}>{item.name}</span>
           ))}
         </div>

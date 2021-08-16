@@ -3,8 +3,8 @@ import OrderSummary from "./OrderSummary";
 export default function MyOrders() {
   const pendingOrders = [
     {
-      restaurant: "Galo Padeiro",
-      items: [
+      restaurante: "Galo Padeiro",
+      itens: [
         {
           _id: 1,
           name: "Sanduiche brie e parma",
@@ -28,13 +28,13 @@ export default function MyOrders() {
   const completedOrders = [
     {
       restaurant: "Degusta",
-      items: [{ name: "Sorvete Doce de Leite", description: "", price: 30 }],
+      itens: [{ name: "Sorvete Doce de Leite", description: "", price: 30 }],
       status: "concluido",
       total: 30,
     },
     {
       restaurant: "Galo Padeiro",
-      items: [
+      itens: [
         {
           name: "Sanduiche charque e aioli",
           description: "Croissant",

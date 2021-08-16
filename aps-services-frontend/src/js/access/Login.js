@@ -9,7 +9,7 @@ export default function Login() {
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           axios
-            .post("https://localhost:5555/api/people/login/", values)
+            .post("http://localhost:5555/api/people/login", {email: values.email, senha: values.password})
             .then(() => window.open("#/myOrders", "_self"))
             .catch(() => alert("Erro ao fazer login"));
 
