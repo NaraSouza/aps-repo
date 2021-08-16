@@ -218,6 +218,14 @@
       height: 40px;
       margin-right: 20px;
       margin-bottom: 20px;
+
+      &.active {
+        border: solid 1px #e22a00;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

@@ -22,10 +22,14 @@ export default function SignUp() {
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          const { nome, email, senha, ...others } = values
+          const { nome, email, senha, ...others } = values;
           axios
-            .post("http://localhost:5555/api/people/", {nome, email, senha, endereco: {others}})
+            .post("http://localhost:5555/api/people/", {
+              nome,
+              email,
+              senha,
+              endereco: { others },
+            })
             .then(() => alert("Cliente cadastrado com sucesso"))
             .catch(() => alert("Erro ao cadastrar cliente"));
 

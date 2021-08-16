@@ -1,6 +1,8 @@
 import axios from "axios";
+import classnames from "classnames";
 import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import { AppContext } from "../App";
 
 export default function PaymentMethods({
@@ -34,7 +36,10 @@ export default function PaymentMethods({
       <div>
         {debitCards.map((paymentMethod) => (
           <span
-            className="payment-method-card"
+            className={classnames(
+              "payment-method-card",
+              paymentMethod.name === chosenMethod && "active"
+            )}
             onClick={() => setChosenMethod(paymentMethod.name)}
           >
             {paymentMethod.name}
@@ -45,7 +50,10 @@ export default function PaymentMethods({
       <div>
         {creditCards.map((paymentMethod) => (
           <span
-            className="payment-method-card"
+            className={classnames(
+              "payment-method-card",
+              paymentMethod.name === chosenMethod && "active"
+            )}
             onClick={() => setChosenMethod(paymentMethod.name)}
           >
             {paymentMethod.name}

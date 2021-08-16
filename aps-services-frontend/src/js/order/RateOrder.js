@@ -12,8 +12,6 @@ export default function RateOrder() {
       initialValues={{ nota: "", comentario: "" }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-
           axios
             .post("https://localhost:3001/evaluate/", {
               pedido: order,

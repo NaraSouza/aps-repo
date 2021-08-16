@@ -20,8 +20,8 @@ export default function MakeOrder({
       </span>
 
       <div className="mt-4">
-        {order.itens.map((item) => (
-          <Item item={item} />
+        {order.itens.map((item, index) => (
+          <Item key={index} item={item} />
         ))}
       </div>
 
