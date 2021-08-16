@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+node_modules
+test.js
+coverage
+npm-debug.log
+.idea
+*.iml
+dist
