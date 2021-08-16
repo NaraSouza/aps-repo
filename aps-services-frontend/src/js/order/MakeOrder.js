@@ -7,7 +7,6 @@ const username = localStorage.getItem("username");
 export default function MakeOrder({
   order = {
     restaurante: "Galo Padeiro",
-    _id: 8,
     avaliacao: {},
     itens: [
       { name: "Sanduiche brie e parma", description: "Croissant", price: 22 },

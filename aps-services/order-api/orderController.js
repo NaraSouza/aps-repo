@@ -18,7 +18,7 @@ app.use(bodyParser())
 app.use(koaRequest({
     json: true,
     timeout: 3000, 
-    host: '172.17.0.1:5555'
+    host: 'http://172.17.0.1:5555'
   }));
 
 const validatePayment = (payment) => {
@@ -69,7 +69,7 @@ router.put('/cancel', async (ctx, next) => {
 router.put('/evaluate', async (ctx, next) => {
     const { pedido, avaliacao } = ctx.request.body
     try {
-        await ctx.mongo.db('orders-db').collection('orders').updateOne({_id: mongo.ObjectId(pedido.id)}, { $set: {avaliacao: avaliacao} })
+        await ctx.mongo.db('orders-db').collection('orders').updateOne({_id: mongo.ObjectId(pedido._id)}, { $set: {avaliacao: avaliacao} })
         ctx.body = { text: 'Avaliação feita com sucesso' }
         ctx.status = 200
     } catch (error) {
@@ -80,7 +80,7 @@ router.put('/evaluate', async (ctx, next) => {
 
 router.get('/getbyuser/:username', async (ctx, next) => {
     const name = ctx.params.username
-    const result = await ctx.mongo.db('orders-db').collection('orders').find({ usuario: name }).toArray()
+    const result = await ctx.mongo.db('orders-db').collection('orders').find({ usuario: name, status: { $ne: 'concluido' }}).toArray()
     if(result !== []){
         ctx.body = {orders: result}
         ctx.status = 200

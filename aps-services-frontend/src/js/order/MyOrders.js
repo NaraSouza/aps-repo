@@ -1,58 +1,26 @@
 import OrderSummary from "./OrderSummary";
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 
 const username = localStorage.getItem("username");
 
 export default function MyOrders() {
-  const pendingOrders = [
-    {
-      restaurante: "Galo Padeiro",
-      _id: 1,
-      avaliacao: {},
-      itens: [
-        {
-          name: "Sanduiche brie e parma",
-          description: "Croissant",
-          price: 22,
-        },
-        {
-          name: "Madeleine tradicional",
-          description: "",
-          price: 7,
-        },
-      ],
-      status: "em andamento",
-      total: 29,
-      usuario: username,
-    },
-  ];
+  const [pendingOrders, setPendingOrders] = useState([])
+  const [completedOrders, setCompletedOrders] = useState([])
 
-  const completedOrders = [
-    {
-      status: "concluido",
-      itens: [
-          "pizza",
-          "garrafa"
-      ],
-      avaliacao: {},
-      usuario: "r",
-      restaurante: "Degusta"
-    },
-    {
-      restaurante: "Galo Padeiro",
-      _id: 3,
-      avaliacao: {},
-      itens: [
-        {
-          name: "Sanduiche charque e aioli",
-          description: "Croissant",
-          price: 25,
-        },
-      ],
-      status: "concluido",
-      total: 25,
-      usuario: username,
-    },
-  ];
+  useEffect(() => {
+    axios.get(`http://localhost:3001/getbyuser/${username}`).then((response) => {
+      console.log(response)
+      setPendingOrders(response.data.orders)
+    })
+    axios.get(`http://localhost:3001/getbyusercompleted/${username}`).then((response) => {
+      console.log(response)
+      setCompletedOrders(response.data.orders)
+    }).catch((err) => {
+      console.log(err)
+    })
+
+  }, [])
 
   return (
     <div className="my-orders-screen">

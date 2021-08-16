@@ -1,5 +1,5 @@
 const MONGO_INFO = {
-  host: 'localhost',
+  host: '172.17.0.1',
   port: 27017,
   user: 'root',
   pass: 'example',
