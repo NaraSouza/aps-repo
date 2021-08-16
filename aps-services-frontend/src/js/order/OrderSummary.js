@@ -8,7 +8,7 @@ export default function OrderSummary({ order }) {
       <div className="card-info">
         <div className="card-half">
           <div className="order-card-header">
-            <span className="restaurant-name">{order.restaurant}</span>
+            <span className="restaurant-name">{order.restaurante}</span>
 
             <span className="order-status">Pedido {order.status}</span>
           </div>

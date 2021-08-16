@@ -1,11 +1,7 @@
 import axios from "axios";
 import { Formik } from "formik";
-import { useContext } from "react";
-import { AppContext } from "../App";
 
 export default function SignUp() {
-  const { setUsername } = useContext(AppContext);
-
   return (
     <Formik
       initialValues={{
@@ -22,18 +18,18 @@ export default function SignUp() {
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          const { nome, email, senha, ...others } = values;
+          const { nome, email, senha, ...endereco } = values;
           axios
             .post("http://localhost:5555/api/people/", {
               nome,
               email,
               senha,
-              endereco: { others },
+              endereco: { endereco },
             })
             .then(() => alert("Cliente cadastrado com sucesso"))
             .catch(() => alert("Erro ao cadastrar cliente"));
 
-          setUsername(values.nome);
+          localStorage.setItem("username", values.nome);
           setSubmitting(false);
         }, 400);
       }}

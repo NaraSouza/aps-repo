@@ -1,19 +1,18 @@
 import axios from "axios";
 import { Formik } from "formik";
-import { useContext, useState } from "react";
-import { AppContext } from "../App";
+import { useState } from "react";
 
 export default function ChangePassword() {
-  const { username } = useContext(AppContext);
+  const username = localStorage.getItem("username");
   const [data, setData] = useState({});
-  console.log(username)
+
   axios
     .get(`https://localhost:5555/api/people/${username}`)
     .then((response) => {
       setData({
-        name: response.name,
+        nome: response.name,
         email: response.email,
-        password: response.password,
+        senha: response.password,
         rua: response.endereco.rua,
         numero: response.endereco.numero,
         complemento: response.endereco.complemento,
@@ -33,7 +32,7 @@ export default function ChangePassword() {
           axios
             .put("https://localhost:5555/api/people/", {
               ...data,
-              password: values.confirmNewPassword,
+              senha: values.confirmNewPassword,
             })
             .then(() => alert("Senha alterada com sucesso"))
             .catch(() => alert("Erro ao alterar senha"));

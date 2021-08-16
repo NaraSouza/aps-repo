@@ -2,21 +2,26 @@ import { Link } from "react-router-dom";
 
 import Item from "./Item";
 
+const username = localStorage.getItem("username");
+
 export default function MakeOrder({
   order = {
-    restaurant: "Galo Padeiro",
+    restaurante: "Galo Padeiro",
+    _id: 8,
+    avaliacao: {},
     itens: [
       { name: "Sanduiche brie e parma", description: "Croissant", price: 22 },
       { name: "Madeleine tradicional", description: "", price: 7 },
     ],
     total: 29,
     status: "em andamento",
+    usuario: username,
   },
 }) {
   return (
     <div className="make-order-screen">
       <span className="title" style={{ fontWeight: "bold" }}>
-        {order.restaurant}
+        {order.restaurante}
       </span>
 
       <div className="mt-4">

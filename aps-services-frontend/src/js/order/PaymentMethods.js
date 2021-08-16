@@ -1,9 +1,7 @@
 import axios from "axios";
 import classnames from "classnames";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
-
-import { AppContext } from "../App";
 
 export default function PaymentMethods({
   paymentMethods = [
@@ -16,7 +14,6 @@ export default function PaymentMethods({
   ],
 }) {
   const [chosenMethod, setChosenMethod] = useState("");
-  const { username } = useContext(AppContext);
   const debitCards = paymentMethods.filter((paymentMethod) =>
     paymentMethod.name.includes("Débito")
   );
@@ -26,8 +23,6 @@ export default function PaymentMethods({
   const { orderData } = useParams();
 
   let order = JSON.parse(orderData);
-
-  order.usuario = username;
 
   return (
     <div className="payment-methods-screen">

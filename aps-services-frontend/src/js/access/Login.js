@@ -9,7 +9,10 @@ export default function Login() {
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           axios
-            .post("http://localhost:5555/api/people/login", {email: values.email, senha: values.password})
+            .post("http://localhost:5555/api/people/login", {
+              email: values.email,
+              senha: values.password,
+            })
             .then(() => window.open("#/myOrders", "_self"))
             .catch(() => alert("Erro ao fazer login"));
 
@@ -37,10 +40,6 @@ export default function Login() {
               value={values.password}
               type="password"
             />
-
-            <a href="#/changePassword" target="_self" rel="noopener noreferrer">
-              Alterar senha
-            </a>
 
             <div className="buttons">
               <Link className="btn secondary" to="/signUp">

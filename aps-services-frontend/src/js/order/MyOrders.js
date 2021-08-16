@@ -1,39 +1,45 @@
 import OrderSummary from "./OrderSummary";
 
+const username = localStorage.getItem("username");
+
 export default function MyOrders() {
   const pendingOrders = [
     {
       restaurante: "Galo Padeiro",
+      _id: 1,
+      avaliacao: {},
       itens: [
         {
-          _id: 1,
           name: "Sanduiche brie e parma",
           description: "Croissant",
           price: 22,
-          avaliacao: {},
         },
         {
-          _id: 2,
           name: "Madeleine tradicional",
           description: "",
           price: 7,
-          avaliacao: {},
         },
       ],
       status: "em andamento",
       total: 29,
+      usuario: username,
     },
   ];
 
   const completedOrders = [
     {
-      restaurant: "Degusta",
+      restaurante: "Degusta",
+      _id: 2,
+      avaliacao: {},
       itens: [{ name: "Sorvete Doce de Leite", description: "", price: 30 }],
       status: "concluido",
       total: 30,
+      usuario: username,
     },
     {
-      restaurant: "Galo Padeiro",
+      restaurante: "Galo Padeiro",
+      _id: 3,
+      avaliacao: {},
       itens: [
         {
           name: "Sanduiche charque e aioli",
@@ -43,6 +49,7 @@ export default function MyOrders() {
       ],
       status: "concluido",
       total: 25,
+      usuario: username,
     },
   ];
 

@@ -2,15 +2,20 @@ import { useParams } from "react-router-dom";
 
 import Item from "./Item";
 
+const username = localStorage.getItem("username");
+
 export default function Order({
   orderA = {
-    restaurant: "Galo Padeiro",
+    restaurante: "Galo Padeiro",
+    _id: 4,
+    avaliacao: {},
     itens: [
       { name: "Sanduiche brie e parma", description: "Croissant", price: 22 },
       { name: "Madeleine tradicional", description: "", price: 7 },
     ],
     total: 29,
     status: "em andamento",
+    usuario: username,
   },
 }) {
   const { orderData } = useParams();
@@ -22,7 +27,7 @@ export default function Order({
   return (
     <div className="order-screen">
       <span className="title" style={{ fontWeight: "bold" }}>
-        {order.restaurant}
+        {order.restaurante}
       </span>
 
       <div className="mt-4">

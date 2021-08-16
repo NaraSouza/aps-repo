@@ -1,12 +1,12 @@
 import axios from "axios";
 import { Formik } from "formik";
-import { useContext, useState } from "react";
-
-import { AppContext } from "../App";
+import { useState } from "react";
 
 export default function MyAccount() {
-  const { username } = useContext(AppContext);
   const [data, setData] = useState({});
+  const username = localStorage.getItem("username");
+
+  console.log(username);
 
   axios
     .get(`https://localhost:5555/api/people/${username}`)
