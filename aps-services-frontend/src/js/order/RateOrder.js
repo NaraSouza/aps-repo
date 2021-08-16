@@ -1,14 +1,27 @@
+import axios from "axios";
 import { Formik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function RateOrder() {
+  const { orderData } = useParams();
+
+  const order = JSON.parse(orderData);
+
   return (
     <Formik
       initialValues={{ nota: "", comentario: "" }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
-          //fazer post
+
+          axios
+            .post("https://localhost:3001/evaluate/", {
+              pedido: order,
+              avaliacao: values,
+            })
+            .then(() => alert("Pedido avaliado com sucesso"))
+            .catch(() => alert("Erro ao avaliar pedido"));
+
           setSubmitting(false);
         }, 400);
       }}

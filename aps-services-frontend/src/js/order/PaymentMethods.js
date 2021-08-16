@@ -1,3 +1,8 @@
+import axios from "axios";
+import { useContext, useState } from "react";
+import { useParams } from "react-router-dom";
+import { AppContext } from "../App";
+
 export default function PaymentMethods({
   paymentMethods = [
     { name: "Visa - Débito" },
@@ -8,13 +13,19 @@ export default function PaymentMethods({
     { name: "Elo - Crédito" },
   ],
 }) {
+  const [chosenMethod, setChosenMethod] = useState("");
+  const { username } = useContext(AppContext);
   const debitCards = paymentMethods.filter((paymentMethod) =>
     paymentMethod.name.includes("Débito")
   );
-
   const creditCards = paymentMethods.filter((paymentMethod) =>
     paymentMethod.name.includes("Crédito")
   );
+  const { orderData } = useParams();
+
+  let order = JSON.parse(orderData);
+
+  order.usuario = username;
 
   return (
     <div className="payment-methods-screen">
@@ -22,19 +33,41 @@ export default function PaymentMethods({
 
       <div>
         {debitCards.map((paymentMethod) => (
-          <span className="payment-method-card">{paymentMethod.name}</span>
+          <span
+            className="payment-method-card"
+            onClick={() => setChosenMethod(paymentMethod.name)}
+          >
+            {paymentMethod.name}
+          </span>
         ))}
       </div>
 
       <div>
         {creditCards.map((paymentMethod) => (
-          <span className="payment-method-card">{paymentMethod.name}</span>
+          <span
+            className="payment-method-card"
+            onClick={() => setChosenMethod(paymentMethod.name)}
+          >
+            {paymentMethod.name}
+          </span>
         ))}
       </div>
 
-      {/* fazer request para salvar pedido */}
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <button className="btn primary">Realizar pagamento</button>
+        <button
+          className="btn primary"
+          onClick={() => {
+            axios
+              .post("https://localhost:3001/create/", {
+                pedido: order,
+                pagamento: { forma: chosenMethod, valor: order.total },
+              })
+              .then(() => alert("Pedido criado com sucesso"))
+              .catch(() => alert("Erro ao criar pedido"));
+          }}
+        >
+          Realizar pagamento
+        </button>
       </div>
     </div>
   );

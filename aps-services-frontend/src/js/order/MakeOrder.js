@@ -37,7 +37,10 @@ export default function MakeOrder({
         <div
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
-          <Link className="btn primary" to="/paymentMethods">
+          <Link
+            className="btn primary"
+            to={`/paymentMethods/${JSON.stringify(order)}`}
+          >
             Escolher forma de pagamento
           </Link>
         </div>

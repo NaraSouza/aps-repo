@@ -1,7 +1,10 @@
+import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
 export default function CancelOrder() {
   const { orderData } = useParams();
+
+  const order = JSON.parse(orderData);
 
   return (
     <div className="cancel-order-screen">
@@ -12,8 +15,17 @@ export default function CancelOrder() {
           Não, voltar ao pedido
         </Link>
 
-        {/* fazer request para cancelar pedido */}
-        <button className="btn primary">Sim, cancelar o pedido</button>
+        <button
+          className="btn primary"
+          onClick={() => {
+            axios
+              .put("https://localhost:3001/cancel/", order._id)
+              .then(() => alert("Pedido cancelado com sucesso"))
+              .catch(() => alert("Erro ao cancelar pedido"));
+          }}
+        >
+          Sim, cancelar o pedido
+        </button>
       </div>
     </div>
   );

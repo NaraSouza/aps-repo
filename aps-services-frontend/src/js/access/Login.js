@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
 
@@ -7,8 +8,11 @@ export default function Login() {
       initialValues={{ email: "", password: "" }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          //fazer get
+          axios
+            .post("https://localhost:5555/api/people/login/", values)
+            .then(() => window.open("#/myOrders", "_self"))
+            .catch(() => alert("Erro ao fazer login"));
+
           setSubmitting(false);
         }, 400);
       }}

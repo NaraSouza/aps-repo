@@ -5,8 +5,20 @@ export default function MyOrders() {
     {
       restaurant: "Galo Padeiro",
       items: [
-        { name: "Sanduiche brie e parma", description: "Croissant", price: 22 },
-        { name: "Madeleine tradicional", description: "", price: 7 },
+        {
+          _id: 1,
+          name: "Sanduiche brie e parma",
+          description: "Croissant",
+          price: 22,
+          avaliacao: {},
+        },
+        {
+          _id: 2,
+          name: "Madeleine tradicional",
+          description: "",
+          price: 7,
+          avaliacao: {},
+        },
       ],
       status: "em andamento",
       total: 29,

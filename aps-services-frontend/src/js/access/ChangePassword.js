@@ -22,19 +22,21 @@ export default function ChangePassword() {
         estado: response.endereco.estado,
         cep: response.endereco.cep,
       });
-    });
+    })
+    .catch(() => alert("Erro ao buscar dados"));
 
   return (
     <Formik
       initialValues={{ email: "", newPassword: "", confirmNewPassword: "" }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-
-          axios.put("https://localhost:5555/api/people/", {
-            ...data,
-            password: values.confirmNewPassword,
-          });
+          axios
+            .put("https://localhost:5555/api/people/", {
+              ...data,
+              password: values.confirmNewPassword,
+            })
+            .then(() => alert("Senha alterada com sucesso"))
+            .catch(() => alert("Erro ao alterar senha"));
 
           setSubmitting(false);
         }, 400);

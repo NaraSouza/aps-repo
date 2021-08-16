@@ -24,7 +24,10 @@ export default function SignUp() {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
 
-          axios.post("https://localhost:5555/api/people/", values);
+          axios
+            .post("https://localhost:5555/api/people/", values)
+            .then(() => alert("Cliente cadastrado com sucesso"))
+            .catch(() => alert("Erro ao cadastrar cliente"));
 
           setUsername(values.name);
           setSubmitting(false);

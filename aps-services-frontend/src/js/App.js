@@ -43,7 +43,10 @@ function App() {
 
               <Route path="/makeOrder" component={MakeOrder} />
 
-              <Route path="/paymentMethods" component={PaymentMethods} />
+              <Route
+                path="/paymentMethods/:orderData"
+                component={PaymentMethods}
+              />
 
               <Route path="/cancelOrder/:orderData" component={CancelOrder} />
 

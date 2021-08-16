@@ -23,7 +23,8 @@ export default function MyAccount() {
         estado: response.endereco.estado,
         cep: response.endereco.cep,
       });
-    });
+    })
+    .catch(() => alert("Erro ao buscar dados"));
 
   return (
     <Formik
@@ -41,9 +42,10 @@ export default function MyAccount() {
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-
-          axios.put("https://localhost:5555/api/people/", values);
+          axios
+            .put("https://localhost:5555/api/people/", values)
+            .then(() => alert("Dados atualizados com sucesso"))
+            .catch(() => alert("Erro ao atualizar dados"));
 
           setSubmitting(false);
         }, 400);
@@ -78,11 +80,7 @@ export default function MyAccount() {
               type="password"
             />
 
-            <a
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="#/changePassword" target="_self" rel="noopener noreferrer">
               Alterar senha
             </a>
 
