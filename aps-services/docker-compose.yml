@@ -16,6 +16,12 @@ services:
       - 3001:3001
     depends_on:
       - mongo
+  front:
+    build:
+      context: front
+    restart: always
+    ports:
+      - 3000:3000
   mongo:
     image: mongo
     restart: always

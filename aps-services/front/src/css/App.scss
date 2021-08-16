@@ -1,0 +1,231 @@
+.App {
+  header {
+    background: #f7f7f7;
+    height: 80px;
+
+    .logo {
+      margin-left: 70px;
+      margin-top: 5px;
+    }
+  }
+
+  .content {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 100vh;
+
+    a {
+      color: #e22a00;
+    }
+
+    input,
+    .btn {
+      height: 40px;
+    }
+
+    input,
+    textarea {
+      border: solid 1px #c7c7c7;
+      border-radius: 0.25rem;
+      padding: 0px 15px;
+    }
+
+    ::placeholder {
+      color: #c7c7c7;
+      font-size: 15px;
+    }
+
+    .btn {
+      width: 140px;
+    }
+
+    .title {
+      font-size: 25px;
+    }
+
+    .subtitle {
+      font-size: 22px;
+      text-align: start;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .primary {
+      background: #e22a00;
+      color: white;
+    }
+
+    .secondary {
+      background: white;
+      color: #e22a00;
+      border: solid 1px #c7c7c7;
+    }
+
+    .input-groups {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .login-screen,
+    .signup-screen,
+    .change-password-screen,
+    .my-account-screen,
+    .cancel-order-screen,
+    .rate-order-screen,
+    .payment-methods-screen {
+      display: inline-grid;
+      text-align: center;
+      width: 300px;
+      margin-top: 80px;
+
+      a:not(.btn) {
+        text-align: end;
+      }
+    }
+
+    .login-screen {
+      height: 300px;
+    }
+
+    .signup-screen,
+    .change-password-screen,
+    .my-account-screen {
+      .btn {
+        justify-self: center;
+      }
+    }
+
+    .signup-screen,
+    .my-account-screen {
+      height: 650px;
+    }
+
+    .change-password-screen,
+    .rate-order-screen {
+      height: 300px;
+    }
+
+    .my-orders-screen {
+      margin-top: 40px;
+      margin-left: 40px;
+      width: 100%;
+
+      .btn {
+        font-size: 12px;
+      }
+
+      .orders {
+        display: flex;
+      }
+    }
+
+    .order-summary-card {
+      border: solid 1px #e7e7e7;
+      border-radius: 0.25rem;
+      padding: 15px;
+      width: 500px;
+      margin-right: 50px;
+      margin-bottom: 50px;
+
+      .order-card-header,
+      .order-items,
+      .card-info {
+        display: inline-grid;
+        width: 100%;
+      }
+
+      .card-half {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .icon-go-to-order {
+        background: transparent;
+        border: none;
+        color: #c7c7c7;
+        cursor: pointer;
+        width: 15px;
+        height: 15px;
+        text-align: end;
+      }
+
+      .restaurant-name {
+        font-size: 16px;
+      }
+
+      .order-status {
+        font-size: 12px;
+        color: #7a7a7a;
+      }
+
+      .order-items {
+        font-size: 16px;
+        color: #b7b7b7;
+      }
+
+      .btn {
+        height: 32px;
+      }
+    }
+
+    .cancel-order-screen {
+      width: 500px;
+      height: 300px;
+
+      .btn {
+        width: 220px;
+      }
+    }
+
+    .rate-order-screen,
+    .payment-methods-screen {
+      text-align: start;
+    }
+
+    .order-screen,
+    .make-order-screen,
+    .payment-methods-screen {
+      width: 500px;
+      height: 500px;
+      margin-top: 80px;
+
+      .item-header {
+        display: inline-grid;
+      }
+    }
+
+    .make-order-screen,
+    .payment-methods-screen {
+      .btn {
+        width: 300px;
+      }
+    }
+
+    .payment-methods-screen {
+      height: 300px;
+    }
+
+    .payment-method-card {
+      border: solid 1px #e7e7e7;
+      border-radius: 0.25rem;
+      padding: 15px;
+      width: 100px;
+      height: 40px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+
+      &.active {
+        border: solid 1px #e22a00;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
