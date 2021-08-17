@@ -19,7 +19,7 @@ public class Fachada {
     public Fachada() {
         this.fabricaAbstrata = new FabricaRepositorioBDR();
         this.controladorCadastroCliente = new ControladorCadastroCliente(fabricaAbstrata.criarRepositorioCliente(), fabricaAbstrata.criarRepositorioEndereco());
-        this.controladorEfetuarPedido = new ControladorEfetuarPedido(fabricaAbstrata.criarRepositorioRestaurante(), fabricaAbstrata.criarRepositorioPedido(), fabricaAbstrata.criarRepositorioPagamento());
+        this.controladorEfetuarPedido = new ControladorEfetuarPedido(fabricaAbstrata.criarRepositorioRestaurante(), fabricaAbstrata.criarRepositorioPedido(), fabricaAbstrata.criarRepositorioPagamento(), fabricaAbstrata.criarRepositorioItem());
     }
 
     public void cadastrar(Cliente cliente, Endereco endereco){
@@ -29,7 +29,7 @@ public class Fachada {
 
     public void efetuarPedido(Pedido pedido, Restaurante restaurante, Pagamento pagamento){
         controladorEfetuarPedido.inserirRestaurante(restaurante);
-        controladorEfetuarPedido.inserirCarrinho(pedido);
+        controladorEfetuarPedido.inserirItens(pedido.getItens());
         controladorEfetuarPedido.fazerPagamento(pagamento, restaurante, pedido);
     }
 

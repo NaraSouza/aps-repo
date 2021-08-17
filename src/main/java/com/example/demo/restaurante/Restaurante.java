@@ -1,5 +1,7 @@
 package com.example.demo.restaurante;
 
+import java.util.List;
+
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,11 +13,11 @@ import com.example.demo.pedido.Pedido;
 public class Restaurante {
     @Id
     private Long id;
-    @OneToOne
-    private FilaPedidos filaPedidos;
+    @ElementCollection
+    private List<Pedido> filaPedidos;
     private String nome;
 
-    public Restaurante(FilaPedidos filaPedidos, String nome) {
+    public Restaurante(List<Pedido> filaPedidos, String nome) {
         this.id = 1l;
         this.filaPedidos = filaPedidos;
         this.nome = nome;
@@ -33,11 +35,11 @@ public class Restaurante {
         return id;
     }
 
-    public FilaPedidos getFilaPedidos() {
+    public List<Pedido> getFilaPedidos() {
         return filaPedidos;
     }
 
-    public void setFilaPedidos(FilaPedidos filaPedidos) {
+    public void setFilaPedidos(List<Pedido> filaPedidos) {
         this.filaPedidos = filaPedidos;
     }
 
