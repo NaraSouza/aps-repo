@@ -5,6 +5,7 @@ const bodyParser = require('koa-bodyparser')
 const koaRequest = require('koa-http-request');
 const cors = require('@koa/cors');
 const constants = require('./constants')
+const repository = require('./orderRepository')
 
 const app = new Koa()
 const router = new Router()
@@ -27,7 +28,7 @@ const validatePayment = (payment) => {
 
 router.get('/status/:id', async (ctx, next) => {
     const id = ctx.params.id
-    const result = await ctx.mongo.db('orders-db').collection('orders').find({ _id: mongo.ObjectId(id) }).toArray()
+    const result = await repository.find(ctx, 'orders-db', 'orders', { _id: mongo.ObjectId(id) } )
     if(result !== []){
         ctx.body = {status: result[0]}
         ctx.status = 200
@@ -44,8 +45,8 @@ router.post('/create', async (ctx, next) => {
             'User-Agent': 'koa-http-request'
         });
         pedido.endereco = result.client.endereco
-        await ctx.mongo.db('orders-db').collection('orders').insertOne(pedido)
-        await ctx.mongo.db('payments-db').collection('payments').insertOne(pagamento)
+        await repository.insert(ctx, 'payments-db', 'payments', pagamento)
+        await repository.insert(ctx, 'orders-db', 'orders', pedido)
         ctx.body = {text: 'Criado com sucesso'}
         ctx.status = 200
     } else {
@@ -57,7 +58,7 @@ router.post('/create', async (ctx, next) => {
 router.put('/cancel', async (ctx, next) => {
     const { _id } = ctx.request.body
     try {
-    await ctx.mongo.db('orders-db').collection('orders').updateOne({_id: mongo.ObjectId(_id)}, { $set: {status: 'cancelado'} })
+    await repository.update(ctx, 'orders-db', 'orders', {_id: mongo.ObjectId(_id)}, { $set: {status: 'cancelado'} })
     ctx.body = {text: 'Cancelamento feito com sucesso'}
     ctx.status = 200
     } catch (error) {
@@ -69,7 +70,7 @@ router.put('/cancel', async (ctx, next) => {
 router.put('/evaluate', async (ctx, next) => {
     const { pedido, avaliacao } = ctx.request.body
     try {
-        await ctx.mongo.db('orders-db').collection('orders').updateOne({_id: mongo.ObjectId(pedido._id)}, { $set: {avaliacao: avaliacao} })
+        await repository.update(ctx, 'orders-db', 'orders', {_id: mongo.ObjectId(pedido._id)}, { $set: {avaliacao: avaliacao} })
         ctx.body = { text: 'Avaliação feita com sucesso' }
         ctx.status = 200
     } catch (error) {
@@ -80,7 +81,7 @@ router.put('/evaluate', async (ctx, next) => {
 
 router.get('/getbyuser/:username', async (ctx, next) => {
     const name = ctx.params.username
-    const result = await ctx.mongo.db('orders-db').collection('orders').find({ usuario: name, status: { $ne: 'concluido' }}).toArray()
+    const result = await repository.find(ctx, 'orders-db', 'orders', { usuario: name, status: { $ne: 'concluido' }})
     if(result !== []){
         ctx.body = {orders: result}
         ctx.status = 200
@@ -92,7 +93,7 @@ router.get('/getbyuser/:username', async (ctx, next) => {
 
 router.get('/getbyusercompleted/:username', async (ctx, next) => {
     const name = ctx.params.username
-    const result = await ctx.mongo.db('orders-db').collection('orders').find({ usuario: name, status: 'concluido' }).toArray()
+    const result = await repository.find(ctx, 'orders-db', 'orders', { usuario: name, status: 'concluido' })
     if(result !== []){
         ctx.body = {orders: result}
         ctx.status = 200

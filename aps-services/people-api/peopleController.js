@@ -3,7 +3,8 @@ const Router = require('koa-router')
 const mongo = require('koa-mongo')
 const bodyParser = require('koa-bodyparser')
 const constants = require('./constants')
-const cors = require('@koa/cors');
+const cors = require('@koa/cors')
+const repository = require('./peopleRepository')
 
 const app = new Koa()
 const router = new Router()
@@ -17,7 +18,7 @@ app.use(bodyParser())
 router.post('/api/people', async (ctx, next) => {
     const client = ctx.request.body
     try {
-        await ctx.mongo.db('people-db').collection('people').insertOne(client)
+        await repository.insert(ctx, 'people-db', 'people', client)
         ctx.body = { text: 'Conta criada com sucesso' }
         ctx.status = 200
     }catch (error) {
@@ -29,7 +30,7 @@ router.post('/api/people', async (ctx, next) => {
 router.post('/api/people/login', async (ctx, next) => {
     const {email, password} = ctx.request.body
     try {
-        const result = await ctx.mongo.db('people-db').collection('people').find({ email: email, senha: password }).toArray()
+        const result = await repository.find(ctx, 'people-db', 'people', { email: email, senha: password })
         if (result !== []){
             ctx.body = { text: 'Login efetuado com sucesso' }
             ctx.status = 200
@@ -47,7 +48,7 @@ router.put('/api/people', async (ctx, next) => {
     const client = ctx.request.body
     console.log(client.nome)
     try {
-        await ctx.mongo.db('people-db').collection('people').updateOne({nome: client.nome}, { $set: { nome: client.nome, senha: client.senha, endereco: client.endereco, email: client.email } })
+        await repository.update(ctx, 'people-db', 'people', {nome: client.nome}, { $set: { nome: client.nome, senha: client.senha, endereco: client.endereco, email: client.email } })
         ctx.body = {text: 'Atualização feita com sucesso'}
         ctx.status = 200
     } catch (error) {
@@ -60,7 +61,7 @@ router.put('/api/people', async (ctx, next) => {
 router.get('/api/people/:username', async (ctx, next) => {
     const { username } = ctx.params
     try {
-        const result = await ctx.mongo.db('people-db').collection('people').find({ nome: username }).toArray()
+        const result = await repository.find(ctx, 'people-db', 'people', { nome: username })
         ctx.body = {client: result[0]}
         ctx.status = 200
     } catch(error){
