@@ -19,11 +19,20 @@ app.use(bodyParser())
 app.use(koaRequest({
     json: true,
     timeout: 3000, 
-    host: 'http://172.17.0.1:5555'
+    host: 'http://people-api:5555'
   }));
 
-const validatePayment = (payment) => {
-    return true
+const validatePayment = async (ctx, payment) => {
+    try {
+    const { result } = await ctx.post(`https://mocki.io/v1/1f622b7b-12c3-442e-8ed4-d8e2493d702b`, payment, {
+        'User-Agent': 'koa-http-request'
+    });
+    console.log(result)
+    return result
+    }catch(error) {
+        console.log(error)
+        return false
+    }
 }
 
 router.get('/status/:id', async (ctx, next) => {
@@ -40,7 +49,7 @@ router.get('/status/:id', async (ctx, next) => {
   
 router.post('/create', async (ctx, next) => {
     const {pedido, pagamento} = ctx.request.body
-    if (validatePayment(pagamento)) {
+    if (validatePayment(ctx, pagamento)) {
         const result = await ctx.get(`/api/people/${pedido.usuario}`, null, {
             'User-Agent': 'koa-http-request'
         });
