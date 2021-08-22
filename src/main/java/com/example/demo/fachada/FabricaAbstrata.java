@@ -5,6 +5,7 @@ import com.example.demo.endereco.IRepositorioEndereco;
 import com.example.demo.pagamento.IRepositorioPagamento;
 import com.example.demo.pedido.IRepositorioPedido;
 import com.example.demo.restaurante.IRepositorioRestaurante;
+import com.example.demo.item.IRepositorioItem;
 
 public interface FabricaAbstrata {
     public IRepositorioCliente criarRepositorioCliente();
@@ -12,4 +13,5 @@ public interface FabricaAbstrata {
     public IRepositorioPagamento criarRepositorioPagamento();
     public IRepositorioPedido criarRepositorioPedido();
     public IRepositorioRestaurante criarRepositorioRestaurante();
+    public IRepositorioItem criarRepositorioItem();
 }

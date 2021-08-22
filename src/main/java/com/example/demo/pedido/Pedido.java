@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.example.demo.item.Item;
+
 @Entity
 public class Pedido {
     @Id

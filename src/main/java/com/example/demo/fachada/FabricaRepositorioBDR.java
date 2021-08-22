@@ -10,6 +10,8 @@ import com.example.demo.pedido.IRepositorioPedido;
 import com.example.demo.pedido.RepositorioPedidoBDR;
 import com.example.demo.restaurante.IRepositorioRestaurante;
 import com.example.demo.restaurante.RepositorioRestauranteBDR;
+import com.example.demo.item.IRepositorioItem;
+import com.example.demo.item.RepositorioItemBDR;
 
 public class FabricaRepositorioBDR implements FabricaAbstrata {
     public FabricaRepositorioBDR() {
@@ -29,6 +31,10 @@ public class FabricaRepositorioBDR implements FabricaAbstrata {
     }
     public IRepositorioPagamento criarRepositorioPagamento(){
         return new RepositorioPagamentoBDR();
+    }
+
+    public IRepositorioItem criarRepositorioItem(){
+        return new RepositorioItemBDR();
     }
 
 }

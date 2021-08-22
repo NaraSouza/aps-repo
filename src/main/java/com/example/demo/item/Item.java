@@ -1,4 +1,4 @@
-package com.example.demo.pedido;
+package com.example.demo.item;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

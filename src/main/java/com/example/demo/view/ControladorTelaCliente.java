@@ -9,10 +9,9 @@ import com.example.demo.cliente.Cliente;
 import com.example.demo.endereco.Endereco;
 import com.example.demo.fachada.Fachada;
 
+import com.example.demo.item.Item;
 import com.example.demo.pagamento.Pagamento;
-import com.example.demo.pedido.Item;
 import com.example.demo.pedido.Pedido;
-import com.example.demo.restaurante.FilaPedidos;
 import com.example.demo.restaurante.Restaurante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
